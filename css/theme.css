@@ -1,0 +1,34 @@
+:root{
+ color-scheme:dark;
+ --bg:#101317; --bg2:#171b21; --bg3:#1e242b; --bg4:#0b0d10;
+ --ln:#2a313a; --ln2:#3a434e;
+ --fg:#e9edf2; --fg2:#a7b0bb; --fg3:#727c88;
+ --ac:#6ea8fe; --acq:#1b2c42; --acb:#31507a; --acf:#cfe3ff;
+ --brand:#c8a45c; --brandq:#241f15; --brandb:#483c24; --brandf:#f0d9a8;
+ --ok:#6cc08a; --wr:#e3b567; --er:#e8736f; --dng:#ffa8a8;
+ --hov:#222932; --fldbd:#303a45; --thumb:#2f3945;
+ --r1:4px; --r2:6px; --r3:9px; --r4:13px;
+ --sh1:0 1px 2px rgba(0,0,0,.40);
+ --sh2:0 8px 20px -6px rgba(0,0,0,.55),0 2px 6px rgba(0,0,0,.34);
+ --sh3:0 18px 48px -12px rgba(0,0,0,.66),0 4px 12px rgba(0,0,0,.42);
+ --edge:inset 0 1px 0 rgba(255,255,255,.045);
+ --focus:0 0 0 2px color-mix(in srgb,var(--ac) 55%,transparent);
+ --ui:"Segoe UI","Noto Sans Arabic","IBM Plex Sans Arabic","Dubai",
+      Tahoma,Arial,sans-serif;
+ --mono:"Cascadia Mono","JetBrains Mono",Consolas,"Courier New",monospace;
+ --t:120ms; --ease:cubic-bezier(.2,.6,.2,1);
+}
+:root[data-theme="light"]{
+ color-scheme:light;
+ --bg:#f4f5f7; --bg2:#ebedf1; --bg3:#e2e5ea; --bg4:#ffffff;
+ --ln:#d4d9e0; --ln2:#b8c0ca;
+ --fg:#171a1e; --fg2:#4b535d; --fg3:#78818c;
+ --ac:#1f68cc; --acq:#dbe8fa; --acb:#9cc0ee; --acf:#0e4794;
+ --brand:#8a6a20; --brandq:#f5ecd8; --brandb:#d8c295; --brandf:#5c4713;
+ --ok:#137a43; --wr:#8a5a00; --er:#b3261e; --dng:#b3261e;
+ --hov:#dde2e9; --fldbd:#c2cad4; --thumb:#c3ccd6;
+ --sh1:0 1px 2px rgba(16,24,40,.08);
+ --sh2:0 8px 20px -6px rgba(16,24,40,.16),0 2px 6px rgba(16,24,40,.08);
+ --sh3:0 18px 48px -12px rgba(16,24,40,.22),0 4px 12px rgba(16,24,40,.10);
+ --edge:inset 0 1px 0 rgba(255,255,255,.9);
+}
