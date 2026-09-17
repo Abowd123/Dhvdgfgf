@@ -1,0 +1,109 @@
+/* ═══ سطر الأوامر · الإدخال الحركي · القوائم · الخصائص السريعة ═══ */
+#cmdWrap{
+ flex:none; display:flex; flex-direction:column; min-inline-size:0;
+ opacity:var(--cmdOpa,1);
+}
+#cmdWrap[data-mode="top"]{order:-1}
+#cmdWrap[data-mode="top"] #cmdline{
+ border-block-start:none; border-block-end:1px solid var(--ln)}
+#cmdWrap[data-mode="top"] #log{
+ border-block-start:none; border-block-end:1px solid var(--ln);
+ order:-1}
+#cmdFloat{position:fixed;inset:0;z-index:30;pointer-events:none}
+#cmdWrap[data-mode="float"]{
+ position:fixed; pointer-events:auto; z-index:30;
+ min-inline-size:320px; resize:horizontal; overflow:hidden;
+ border:1px solid var(--ln2); border-radius:var(--r3);
+ box-shadow:var(--sh3),var(--edge);
+}
+#cmdWrap[data-mode="float"] #cmdline{
+ cursor:grab; border-block-start:none}
+:root.dragging #cmdWrap[data-mode="float"] #cmdline{cursor:grabbing}
+#cmdWrap[data-mode="float"] #log{border-radius:0 0 var(--r3) var(--r3)}
+#clMenuBtn{
+ flex:none; background:transparent; color:var(--fg3);
+ border:1px solid transparent; border-radius:var(--r1);
+ padding:1px 5px; cursor:pointer; line-height:1.4;
+}
+#clMenuBtn:hover{background:var(--hov);color:var(--fg)}
+#cMenu{
+ position:fixed; z-index:76; min-inline-size:230px; max-block-size:80vh;
+ overflow-y:auto;
+ background:var(--bg3); border:1px solid var(--ln2); border-radius:var(--r3);
+ box-shadow:var(--sh3),var(--edge); padding:4px 0;
+}
+
+/* ═══ الإدخال الحركي ═══ داخل #stage المعزول ═══ */
+#dynBox{
+ position:absolute; inset-inline-start:0; inset-block-start:0;
+ z-index:10; display:flex; align-items:center; gap:5px;
+ padding:4px 6px; border-radius:var(--r2);
+ background:color-mix(in srgb,var(--bg3) 94%,transparent);
+ border:1px solid var(--brandb);
+ box-shadow:var(--sh2),var(--edge);
+ pointer-events:auto; will-change:transform;
+}
+.dF{display:inline-flex;align-items:center;gap:3px}
+.dF label{color:var(--fg3);font-size:10.5px;margin:0}
+.dF input{
+ inline-size:62px; background:var(--bg4); color:var(--ok);
+ border:1px solid var(--fldbd); border-radius:var(--r1); padding:2px 4px;
+ font-family:var(--mono); font-size:11.5px;
+}
+.dF input:focus{outline:none;border-color:var(--ac);color:var(--fg)}
+.du{color:var(--fg3);font-size:10px}
+.dK{color:var(--brand);font-size:10.5px;font-family:var(--mono)}
+
+/* ═══ قائمة السياق ═══ */
+#ctxMenu{
+ position:fixed; z-index:78; min-inline-size:214px; max-block-size:82vh;
+ overflow-y:auto;
+ background:var(--bg3); border:1px solid var(--ln2); border-radius:var(--r3);
+ box-shadow:var(--sh3),var(--edge); padding:4px 0;
+}
+
+/* ═══ الخصائص السريعة ═══ */
+#qpCard{
+ position:absolute; z-index:11; inline-size:238px;
+ background:color-mix(in srgb,var(--bg2) 95%,transparent);
+ border:1px solid var(--ln2); border-radius:var(--r3);
+ box-shadow:var(--sh2),var(--edge);
+ overflow:hidden;
+}
+.qpH{
+ display:flex; align-items:center; gap:4px;
+ padding:4px 8px; background:var(--bg3);
+ border-block-end:1px solid var(--ln);
+ color:var(--brand); font-size:11.5px; cursor:grab;
+}
+:root.dragging .qpH{cursor:grabbing}
+.qpH span{flex:1;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap}
+.qpH button{
+ flex:none; background:transparent; color:var(--fg3);
+ border:1px solid transparent; border-radius:var(--r1);
+ padding:0 4px; cursor:pointer; font-size:11px; line-height:1.5;
+}
+.qpH button:hover{background:var(--hov);color:var(--fg)}
+#qpBody{padding:5px 8px 7px;display:flex;flex-direction:column;
+ gap:4px}
+.qf{display:flex;align-items:center;gap:5px}
+.qf label{
+ flex:none; inline-size:74px; color:var(--fg3); font-size:11px;
+ margin:0; overflow:hidden; text-overflow:ellipsis;
+ white-space:nowrap;
+}
+.qf input,.qf select{
+ flex:1; min-inline-size:0; background:var(--bg4); color:var(--fg);
+ border:1px solid var(--fldbd); border-radius:var(--r1); padding:2px 5px;
+ font-size:11.5px;
+}
+.qf input.num{direction:ltr;unicode-bidi:isolate;text-align:start}
+.qf input:focus,.qf select:focus{outline:none;border-color:var(--ac);
+ box-shadow:var(--focus)}
+#qpBody .chk{font-size:11.5px}
+#qpBody .hint{margin:2px 0;font-size:11px;color:var(--fg3)}
+
+@media (max-height:700px){
+ #cmdWrap[data-mode="float"]{max-block-size:44vh}
+}
