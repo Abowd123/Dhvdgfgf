@@ -1,0 +1,10 @@
+import assert from "node:assert/strict";
+import { installDefaults, templateList, build, apply } from "../core/templates.js";
+import { calibrate, setScale, state } from "../core/underlay.js";
+let p = 0, f = 0;
+const test = (n, fn) => { try { fn(); p++; console.log("✓ " + n); } catch (e) { f++; console.error("✗ " + n + " → " + (e.message || e)); } };
+test("القوالب المدمجة", () => { installDefaults(); const names = templateList().map(t => t.name); ["room", "studio", "office"].forEach(n => assert.ok(names.includes(n))); });
+test("build يعيد جدراناً وعناصر", () => { const s = build("studio"); assert.equal(s.walls.length, 4); assert.ok(s.blocks.some(b => b.block === "door")); assert.equal(s.meta.scale, 75); });
+test("apply يستدعي الخطافات", () => { let walls = 0, blocks = 0, meta = null; apply("room", { addWall: () => walls++, addBlock: () => blocks++, setMeta: m => { meta = m; } }); assert.equal(walls, 4); assert.equal(blocks, 1); assert.equal(meta.scale, 50); });
+test("معايرة الصورة", () => { setScale(0.01); const before = state().mpp; assert.equal(calibrate({ x: 0, y: 0 }, { x: 2, y: 0 }, 4), before * 2); });
+console.log(`\n${p} ناجح، ${f} فاشل`); process.exit(f ? 1 : 0);
