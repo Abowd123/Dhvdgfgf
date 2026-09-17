@@ -1,0 +1,125 @@
+/* ═══ شريط الحالة · التنقّل · التركيبات ═══ */
+#status{flex-wrap:nowrap}
+#stItems{
+ flex:1; display:flex; align-items:center; gap:5px;
+ min-inline-size:0; overflow:hidden;
+}
+#stItems>button{
+ display:inline-flex; align-items:center; gap:4px; flex:none;
+ background:transparent; color:var(--fg3);
+ border:1px solid transparent; border-radius:var(--r1);
+ padding:2px 6px; cursor:pointer; white-space:nowrap;
+ transition:background var(--t) var(--ease),color var(--t) var(--ease);
+}
+#stItems>button:hover{background:var(--hov);color:var(--fg2)}
+#stItems>button.on{background:var(--acq);color:var(--acf);
+ border-color:var(--acb)}
+#stItems>button.bad{color:var(--er)}
+#stItems>button.bad.on{background:color-mix(in srgb,var(--er) 18%,transparent);
+ border-color:color-mix(in srgb,var(--er) 45%,transparent);color:var(--dng)}
+#stItems>button:disabled{opacity:.34;cursor:default}
+#stItems>button:focus-visible{outline:2px solid var(--ac);
+ outline-offset:-2px}
+#stItems>button.stPop{padding:2px 3px;margin-inline-start:-4px}
+#stItems>button .lb{font-size:11.5px}
+#stItems>button.wide .lb{min-inline-size:44px;text-align:start}
+
+#stSel{color:var(--wr);flex:none;white-space:nowrap}
+#stHint{flex:0 1 auto;min-inline-size:0;overflow:hidden;
+ text-overflow:ellipsis;white-space:nowrap}
+#stInfo{color:var(--ok);max-inline-size:26vw;flex:none}
+#stMenu{
+ position:fixed; z-index:74; min-inline-size:226px; max-block-size:78vh;
+ overflow-y:auto;
+ background:var(--bg3); border:1px solid var(--ln2); border-radius:var(--r3);
+ box-shadow:var(--sh3),var(--edge); padding:4px 0;
+}
+
+/* ═══ شريط التنقّل ═══ داخل #stage المعزول ═══ */
+#navbar{
+ position:absolute; inset-inline-end:9px; inset-block-start:9px;
+ z-index:8; display:flex; flex-direction:column; gap:2px;
+ padding:3px; border-radius:var(--r2);
+ background:color-mix(in srgb,var(--bg2) 82%,transparent);
+ border:1px solid var(--ln2);
+ box-shadow:var(--sh2),var(--edge);
+}
+#navbar button{
+ display:flex; align-items:center; justify-content:center;
+ inline-size:28px; block-size:26px;
+ background:transparent; color:var(--fg2);
+ border:1px solid transparent; border-radius:var(--r1); cursor:pointer;
+}
+#navbar button:hover{background:var(--hov);color:var(--fg)}
+#navbar button.on{background:var(--acq);color:var(--acf);
+ border-color:var(--acb)}
+#navbar button:disabled{opacity:.3;cursor:default}
+#navbar button:disabled:hover{background:transparent}
+#navbar button:focus-visible{outline:2px solid var(--ac);
+ outline-offset:-2px}
+#vMenu{
+ position:fixed; z-index:74; min-inline-size:234px;
+ background:var(--bg3); border:1px solid var(--ln2); border-radius:var(--r3);
+ box-shadow:var(--sh3),var(--edge); padding:4px 0;
+}
+.pmE{padding:6px 12px;color:var(--fg3);font-size:11.5px}
+
+/* ═══ البوصلة ═══ */
+#compass{
+ position:absolute; inset-inline-end:9px; inset-block-end:38px;
+ z-index:8;
+}
+#cmpBtn{
+ background:color-mix(in srgb,var(--bg2) 74%,transparent);
+ border:1px solid var(--ln2); border-radius:50%;
+ padding:2px; cursor:pointer; display:block; line-height:0;
+}
+#cmpBtn:hover{border-color:var(--ac)}
+#cmpBtn:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.cmpR{fill:none;stroke:var(--fg3);stroke-width:1.1;opacity:.65}
+.cmpN{fill:var(--er);stroke:none}
+.cmpT{stroke:var(--fg2);stroke-width:1.6;fill:none;
+ stroke-linecap:round}
+.cmpL{fill:var(--fg2);font:600 9px var(--ui)}
+#cmpPop{
+ position:absolute; inset-inline-end:0; inset-block-end:52px;
+ inline-size:198px; z-index:9;
+ background:var(--bg3); border:1px solid var(--ln2); border-radius:var(--r3);
+ box-shadow:var(--sh3),var(--edge); padding:0 9px 8px;
+}
+.cmpRow{display:flex;align-items:center;gap:5px;margin:7px 0}
+.cmpRow input{
+ flex:1; background:var(--bg4); color:var(--fg);
+ border:1px solid var(--fldbd); border-radius:var(--r1); padding:4px 6px;
+}
+.cmpRow input:focus{outline:none;border-color:var(--ac);box-shadow:var(--focus)}
+.cmpPre{display:flex;gap:3px}
+.cmpPre button{
+ flex:1; background:var(--bg2); color:var(--fg2);
+ border:1px solid var(--ln); border-radius:var(--r1);
+ padding:3px 0; cursor:pointer; font-size:11px;
+}
+.cmpPre button:hover{background:var(--hov);color:var(--fg)}
+
+/* ═══ بطاقة المنظور ═══ */
+#vpLabel{
+ position:absolute; inset-inline-start:9px; inset-block-start:7px;
+ z-index:8; display:flex; align-items:center; gap:4px;
+ pointer-events:none;
+}
+.vpI{
+ background:color-mix(in srgb,var(--bg2) 76%,transparent);
+ color:var(--fg3); border:1px solid var(--ln2); border-radius:var(--r1);
+ padding:1px 6px; font-size:11px; white-space:nowrap;
+ pointer-events:auto;
+}
+button.vpI{cursor:pointer}
+button.vpI:hover{color:var(--fg);border-color:var(--ac)}
+#vpW{color:var(--wr)}
+#vpW.bad{color:var(--er)}
+
+@media (max-width:1080px){
+ #stInfo{max-inline-size:16vw}
+ #stItems>button .lb{display:none}
+ #stItems>button.wide .lb{display:inline}
+}
