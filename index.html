@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<!-- ═══ CSP ═══
+     نصّ المزوّد يمرّ إلى الواجهة (prose وnotes ورسائل الخطأ التي
+     تحمل ١٨٠ حرفاً من جسم ردّه)، والمفتاح مخزَّنٌ في نفس الأصل.
+     سطحُ الحقن مغلقٌ في الشفرة، وهذه طبقةٌ ثانية بلا تكلفة:
+     لا سكربت مضمَّن في المشروع كلّه.
+     'unsafe-inline' للأنماط لازمٌ لأن style="…" يُبنى في ثلاثة
+     عشر موضعاً · connect-src مضيّقٌ إلى https وlocalhost لأن عنوان
+     المزوّد يختاره المستخدم لكن لا داعي لقبول أي مخطّط أو مضيفٍ
+     بعيد غير مشفّر · data: blob: لأن PNG يُدرَج صورةً في PDF
+     ويُنزَّل بـblob. -->
+<meta http-equiv="Content-Security-Policy" content="
+ default-src 'self';
+ script-src 'self';
+ style-src 'self' 'unsafe-inline';
+ img-src 'self' data: blob:;
+ connect-src 'self' https: http://localhost:* http://127.0.0.1:*;
+ object-src 'none';
+ base-uri 'none';
+ form-action 'none';
+ frame-ancestors 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مِسطَر — مخططات معمارية</title>
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/ribbon.css">
+<link rel="stylesheet" href="css/dock.css">
+<link rel="stylesheet" href="css/status.css">
+<link rel="stylesheet" href="css/cmd.css">
+ <link rel="stylesheet" href="css/palette.css">
+ <link rel="stylesheet" href="css/tour.css">
+ <link rel="stylesheet" href="css/helpbot.css">
+</head>
+<body>
+
+<header id="top">
+ <button id="appBtn" aria-haspopup="menu" aria-expanded="false"
+  title="قائمة مِسطَر · Alt ثم ٠">مِسطَر
+  <span class="kt" hidden>٠</span></button>
+ <span id="qat" role="toolbar" aria-label="وصول سريع"></span>
+ <span class="dv"></span>
+ <span class="ver">مليمتر · لا يتحرّك شيء إلا بأمرك</span>
+ <span class="gap"></span>
+ <span class="tip">Alt دلائل · Esc يلغي · F1 مساعدة · F7 فحص</span>
+</header>
+
+<div id="appMenu" hidden></div>
+ <div id="palette" hidden></div>
+<div id="ribbon" hidden></div>
+<nav id="tools"></nav>
+<div id="optbar"></div>
+
+<div id="main">
+ <div class="strip" id="stripS" data-zone="s" hidden></div>
+ <aside id="side" class="dock" data-zone="s"></aside>
+ <div class="dsz" data-rsz="s" role="separator" tabindex="0"
+  aria-orientation="vertical" aria-label="عرض العمود الأيمن"
+  aria-valuemin="210" aria-valuemax="560" aria-valuenow="312"
+  title="اسحب أو استعمل الأسهم"></div>
+ <section id="work">
+  <div id="stage" dir="ltr"><canvas id="cv" tabindex="0"
+    role="img" aria-label="لوحة الرسم — استعمل سطر الإدخال للأوامر"
+    >لوحة رسمٍ نقطية. الأوامر كلّها متاحة من سطر الإدخال
+    وقوائم الشريط.</canvas>
+   <div id="vpLabel"></div>
+   <div id="navbar" role="toolbar" aria-label="تنقّل"></div>
+   <div id="compass"></div>
+   <div id="dynBox" hidden></div>
+   <div id="qpCard" hidden dir="rtl">
+    <div class="qpH"><span id="qpHead"></span>
+     <button type="button" data-act="propsDlg"
+      title="افتح لوحة الخصائص" aria-label="افتح لوحة الخصائص"
+      >⤢</button>
+     <button type="button" id="qpClose" title="إخفاء"
+      aria-label="إخفاء الخصائص السريعة">✕</button></div>
+    <div id="qpBody"></div>
+   </div>
+  </div>
+  <div id="cmdWrap">
+   <div id="cmdline">
+    <span id="clPrompt">أداة:</span>
+    <input id="clIn" type="text" spellcheck="false" autocomplete="off"
+     aria-labelledby="clPrompt"
+     placeholder="اكتب إحداثياً — 3,4 · @5,0 · @5<45 · 5 · <45 · ؟ للمساعد">
+    <span id="clLive"></span>
+    <div id="clSug" hidden></div>
+   </div>
+   <div id="log" role="log" aria-live="polite" aria-atomic="false"
+    aria-label="سجل الرسائل"><div class="ln wr" id="bootMsg"
+    >يُحمَّل مِسطَر… إن بقي هذا السطر فالوحدات لم تُحمَّل.
+    افتح وحدة التحكّم لترى الملفّ المفقود.</div></div>
+  </div>
+   <div id="tour" hidden></div>
+ </section>
+ <div class="dsz" data-rsz="e" role="separator" tabindex="0"
+  aria-orientation="vertical" aria-label="عرض العمود الأيسر"
+  aria-valuemin="210" aria-valuemax="560" aria-valuenow="270"
+  title="اسحب أو استعمل الأسهم" hidden></div>
+ <aside id="sideE" class="dock" data-zone="e" hidden></aside>
+ <div class="strip" id="stripE" data-zone="e" hidden></div>
+</div>
+
+<div id="pPark" hidden></div>
+<div id="floats"></div>
+<div id="pMenu" hidden role="menu"></div>
+<div id="wsMenu" hidden role="menu"></div>
+
+<footer id="status">
+ <div id="stItems"></div>
+ <div id="osPop" hidden></div>
+</footer>
+
+<div id="stMenu" hidden role="menu"></div>
+<div id="vMenu" hidden role="menu"></div>
+<div id="cmdFloat"></div>
+<div id="cMenu" hidden role="menu"></div>
+<div id="ctxMenu" hidden role="menu"></div>
+
+<div id="helpBox" hidden role="dialog" aria-modal="true"
+ aria-label="مساعدة مِسطَر"></div>
+
+<noscript>
+ <div dir="rtl" style="padding:16px;background:#3a1c1c;color:#ffd9d9;
+  font:14px/1.7 Tahoma,Arial,sans-serif">
+  <b>مِسطَر يحتاج جافاسكربت.</b> الواجهة كلّها تُبنى في المتصفّح،
+  ولا خادمَ يرسمها. شغّل جافاسكربت ثم أعِد التحميل.
+  <br>وإن كنت تفتح الملفّ من القرص مباشرةً (<code>file://</code>)
+  فوحدات ES لا تُحمَّل منه — شغّله بخادمٍ محلّي:
+  <code style="direction:ltr;display:inline-block">npm run serve</code>
+ </div>
+</noscript>
+
+<script type="module" src="js/bootguard.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
